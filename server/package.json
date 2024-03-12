@@ -1,0 +1,93 @@
+{
+  "name": "server",
+  "author": "Charles De Lafontaine",
+  "version": "2.0.0",
+  "private": true,
+  "scripts": {
+    "start": "nodemon",
+    "build": "rimraf out && tsc --project tsconfig.app.json",
+    "test": "cross-env TS_NODE_PROJECT='./tsconfig.spec.json' mocha --config=.mocharc.json --node-env=test",
+    "coverage": "cross-env TS_NODE_PROJECT='./tsconfig.spec.json' nyc mocha --config=.mocharc.json --node-env=test --exit",
+    "clean": "rimraf out node_modules"
+  },
+  "nyc": {
+    "check-coverage": true,
+    "lines": 50,
+    "per-file": true,
+    "include": [
+      "app/**/*.ts"
+    ],
+    "extension": [
+      ".ts"
+    ],
+    "exclude": [
+      "**/*.spec.ts",
+      "app/index.ts",
+      "app/server.ts",
+      "app/app.ts",
+      "app/classes/http.exception.ts"
+    ],
+    "require": [
+      "ts-node/register",
+      "tsconfig-paths/register"
+    ],
+    "reporter": [
+      "html",
+      "text",
+      "cobertura"
+    ],
+    "all": true,
+    "cache": true,
+    "sourceMap": true,
+    "instrument": true
+  },
+  "_moduleAliases": {
+    "@app": "out/"
+  },
+  "dependencies": {
+    "@types/pg": "^8.6.5",
+    "axios": "~0.27.2",
+    "body-parser": "^1.20.0",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "debug": "^4.3.4",
+    "eslint": "^8.24.0",
+    "express": "^4.18.1",
+    "http-status-codes": "^2.2.0",
+    "inversify": "^6.0.1",
+    "module-alias": "^2.2.2",
+    "morgan": "^1.10.0",
+    "pg": "^8.8.0",
+    "pg-promise": "^10.12.0",
+    "ps-tree": "^1.2.0",
+    "reflect-metadata": "^0.1.13",
+    "serve-favicon": "^2.5.0",
+    "socket.io": "^4.5.2",
+    "typedi": "^0.10.0"
+  },
+  "devDependencies": {
+    "@types/body-parser": "^1.19.2",
+    "@types/chai": "^4.3.3",
+    "@types/cookie-parser": "^1.4.3",
+    "@types/cors": "^2.8.12",
+    "@types/express": "^4.17.14",
+    "@types/express-serve-static-core": "^4.17.31",
+    "@types/mocha": "^10.0.0",
+    "@types/morgan": "^1.9.3",
+    "@types/node": "^18.7.23",
+    "@types/node-uuid": "~0.0.29",
+    "@types/sinon": "^10.0.13",
+    "chai": "^4.3.7",
+    "concurrently": "^7.4.0",
+    "cross-env": "^7.0.3",
+    "mocha": "^10.1.0",
+    "nodemon": "^2.0.20",
+    "nyc": "^15.1.0",
+    "rimraf": "^3.0.2",
+    "sinon": "^14.0.2",
+    "source-map-support": "^0.5.21",
+    "ts-node": "^10.9.1",
+    "tsconfig-paths": "^4.1.0",
+    "typescript": "^4.8.4"
+  }
+}
