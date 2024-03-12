@@ -1,0 +1,36 @@
+/* custom-dialog.component.css */
+.mat-dialog-container {
+  background-color: var(--theme-background);
+}
+
+mat-dialog-title, mat-dialog-content, mat-dialog-actions {
+  color: var(--theme-purple);
+}
+
+mat-dialog-title {
+  background-color: var(--theme-purple);
+  padding: 15px;
+}
+
+mat-dialog-content {
+  padding: 15px;
+}
+
+mat-dialog-actions {
+  justify-content: flex-end;
+  padding: 15px;
+}
+
+button[mat-dialog-close] {
+  color: white;
+  background-color: var(--theme-blue);
+  margin-left: 10px;
+}
+
+button[mat-dialog-close]:hover {
+  background-color: var(--theme-blue-hover);
+}
+
+button[mat-dialog-close]:active {
+  background-color: var(--theme-lightblue);
+}

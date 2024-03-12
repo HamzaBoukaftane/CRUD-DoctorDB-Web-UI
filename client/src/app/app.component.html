@@ -1,0 +1,26 @@
+<div>
+  <nav class="navbar navbar-dark bg-dark main-nav">
+    <a class="navbar-brand title" href="/" matTooltip="Retournez à l'accueil">INF3710 - TP5</a>
+    <div class="navbar-expand mr-auto">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link active" routerLink="/doctors/add"
+           [style.color]="route =='/doctors/add' ? '#9A75F0' : 'white'"
+           matTooltip="Add more doctors">ADD</a>
+        <a class="nav-item nav-link active" routerLink="/doctors/modify"
+           [style.color]="route =='/doctors/modify' ? '#9A75F0' : 'white'"
+           matTooltip="Modify current doctor">MODIFY</a>
+        <a class="nav-item nav-link active" routerLink="/doctors/delete"
+           [style.color]="route =='/doctors/delete' ? '#9A75F0' : 'white'"
+           matTooltip="Delete current doctor">DELETE</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="home" *ngIf="route == ''">
+    <p>
+      Welcome <br/> To <br/> Doctor DataBase
+    </p>
+    <button mat-raised-button color="primary" class="btn" routerLink="/doctors">Check out our doctors <mat-icon>arrow_right</mat-icon></button>
+  </div>
+  <router-outlet></router-outlet>
+</div>

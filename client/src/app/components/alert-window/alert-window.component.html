@@ -1,0 +1,10 @@
+<h2 mat-dialog-title>{{ data.title }}</h2>
+<div mat-dialog-content [innerHTML]="data.content">
+</div>
+<div mat-dialog-actions>
+  <button *ngIf="doctorsOptions.isDelete && !doctorsOptions.isConfirmingDelete" mat-button [mat-dialog-close]="'close'" (click)="doctorsOptions.updateConfirmingDelete()">Yes, I am</button>
+  <button *ngIf="doctorsOptions.isDelete && !doctorsOptions.isConfirmingDelete" mat-button [mat-dialog-close]="'close'">Abort</button>
+  <button *ngIf="doctorsOptions.isDelete && doctorsOptions.isConfirmingDelete " mat-button [mat-dialog-close]="'Ok'">Ok</button>
+  <button *ngIf="!doctorsOptions.isDelete " mat-button [mat-dialog-close]="'close'">Close</button>
+</div>
+

@@ -1,0 +1,35 @@
+<div *ngIf="!isActionEnable">
+  <div class="table-container">
+    <table class="table">
+      <thead class="table-header">
+        <th *ngIf="doctorsOptions.isDisplay" class="table-header-content">Doctor id</th>
+        <th class="table-header-content">First name</th>
+        <th class="table-header-content">Last name</th>
+        <th class="table-header-content">Speciality</th>
+        <th class="table-header-content">Service id</th>
+        <th class="table-header-content">Years of experience</th>
+        <th *ngIf="!doctorsOptions.isDisplay && !doctorsOptions.isAdd" class="table-header-content">Action</th>
+      </thead>
+      <tbody class="table-body">
+      <tr class="table-row" *ngFor="let doctor of doctors;">
+        <td *ngIf="doctorsOptions.isDisplay" class="table-content">{{doctor.idmedecin}}</td>
+        <td class="table-content">{{doctor.prenom}}</td>
+        <td class="table-content">{{doctor.nom}}</td>
+        <td class="table-content">{{doctor.specialite}}</td>
+        <td class="table-content">{{doctor.idservice}}</td>
+        <td class="table-content">{{doctor.anneesexperience}}</td>
+        <td *ngIf="!doctorsOptions.isDisplay && !doctorsOptions.isAdd" class="table-content">
+          <i class="material-icons effect" (click)="handleAction(doctor.idmedecin)">
+            {{getIcon()}}
+          </i>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <button *ngIf="doctorsOptions.isAdd" mat-raised-button color="primary" class="btn" (click)="addDoctor()">
+    <i class="material-icons">add</i>
+  </button>
+</div>
+
+<app-form *ngIf="isActionEnable" [selectedDoctor]="selectedDoctor" (activeDisable)="refresh()"></app-form>

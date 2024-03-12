@@ -1,0 +1,43 @@
+<h2>{{formTitle}}</h2>
+<form [formGroup]="doctorForm" (ngSubmit)="submitForm()">
+  <label for="firstName">First name: </label>
+  <input type="text" id="firstName" name="firstName" placeholder="Enter First Name" formControlName="prenom">
+  <span *ngIf="prenom && prenom.invalid" class="error">First name required and should start with capital letter (ex: Marie, Claude)</span>
+  <br>
+  <br>
+  <br>
+  <label for="lastName">Last name: </label>
+  <input type="text" id="lastName" name="lastName" placeholder="Enter Last Name" formControlName="nom">
+  <span *ngIf="nom && nom.invalid" class="error">Last name required and should start with capital letter (ex: Benzema, Lee)</span>
+  <br>
+  <br>
+  <br>
+  <label for="speciality">Speciality: </label>
+  <select id="speciality" name="speciality" formControlName="specialite">
+    <option value="{{service.nomservice}}"  *ngFor="let service of services">
+      {{service.nomservice}}
+    </option>
+  </select>
+  <br>
+  <br>
+  <label for="serviceId" >Service id: </label>
+  <select id="serviceId" name="serviceId" formControlName="idservice">
+    <option [ngValue]="service.idservice" *ngFor="let service of services">
+      {{service.idservice}}: {{service.nomservice}}
+    </option>
+  </select>
+  <br>
+  <br>
+  <label for="year">Years of experience: </label>
+  <input type="number" id="year" name="year" placeholder="Enter year of experience" formControlName="anneesexperience">
+  <span *ngIf="anneesexperience && anneesexperience.invalid" class="error">Year of experience required and should be an integer in range 0 to 60</span>
+  <br>
+  <br>
+  <span *ngIf="doctorForm.invalid" class="error">Please rectify errors in order to submit the form</span>
+  <br>
+  <br>
+  <div class="btn-container">
+    <button [disabled]="doctorForm.invalid" class="enter-btn">{{formTitle}}</button>
+    <button type="button" class="cancel-btn" (click)="closeForm()">Cancel</button>
+  </div>
+</form>
